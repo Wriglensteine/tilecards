@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk7ig80fxqfpq"]
+[gd_scene load_steps=3 format=3 uid="uid://bk7ig80fxqfpq"]
 
 [ext_resource type="Script" uid="uid://ckt6qvv0paukc" path="res://scripts/state_manager_test.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bljve8dhflb3k" path="res://scenes/inputs_manager.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node3D"]
 
 [node name="StateManagerReporter" type="Node" parent="."]
 script = ExtResource("1_uwrxv")
+
+[node name="InputsManager" parent="." instance=ExtResource("2_yqjtg")]
