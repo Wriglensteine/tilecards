@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="TileCards"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalStateManager="*res://scripts/global_state_manager.gd"
 
 [dotnet]
 
