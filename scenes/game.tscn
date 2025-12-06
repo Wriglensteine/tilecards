@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk7ig80fxqfpq"]
+[gd_scene load_steps=14 format=3 uid="uid://bk7ig80fxqfpq"]
 
 [ext_resource type="Script" uid="uid://ckt6qvv0paukc" path="res://scripts/state_manager_test.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bljve8dhflb3k" path="res://scenes/inputs_manager.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://cfbdqgkh3jquf" path="res://scenes/free_roam.gd" id="3_dinhu"]
+[ext_resource type="Script" uid="uid://cnoaytnm1tgpv" path="res://scenes/camera_transition.gd" id="4_iywne"]
+[ext_resource type="Script" uid="uid://bw07ku1126y2x" path="res://scenes/at_table.gd" id="4_kvpfn"]
+[ext_resource type="Script" uid="uid://ccv0541c03tox" path="res://scenes/main_menu.gd" id="4_p57ef"]
+[ext_resource type="Script" uid="uid://cll5hnrpg2wwn" path="res://scenes/in_game_menu.gd" id="4_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://c3dqsdo1k3rw3" path="res://textures/default_texture_purple.png" id="5_gee14"]
+[ext_resource type="Script" uid="uid://fv5deeyklya5" path="res://scenes/menu_container.gd" id="5_vtaks"]
+[ext_resource type="Texture2D" uid="uid://cy576nvk6xam8" path="res://textures/default_texture_blue.png" id="6_0tnpc"]
+[ext_resource type="Script" uid="uid://boudfpsr7j1ul" path="res://scenes/main_menu_container.gd" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cxykyyxwqfy2v" path="res://scenes/player.tscn" id="12_dinhu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vtaks"]
+diffuse_texture = ExtResource("5_gee14")
 
 [node name="Game" type="Node3D"]
 
@@ -9,3 +22,50 @@
 script = ExtResource("1_uwrxv")
 
 [node name="InputsManager" parent="." instance=ExtResource("2_yqjtg")]
+
+[node name="FreeRoam" type="Node" parent="InputsManager"]
+script = ExtResource("3_dinhu")
+metadata/_custom_type_script = "uid://d2neuflaukaxe"
+
+[node name="AtTable" type="Node" parent="InputsManager"]
+script = ExtResource("4_kvpfn")
+metadata/_custom_type_script = "uid://d2neuflaukaxe"
+
+[node name="In-GameMenu" type="Node" parent="InputsManager"]
+script = ExtResource("4_u5sy4")
+metadata/_custom_type_script = "uid://d2neuflaukaxe"
+
+[node name="MenuContainer" type="PanelContainer" parent="InputsManager/In-GameMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 378.0
+offset_bottom = 96.0
+grow_horizontal = 2
+script = ExtResource("5_vtaks")
+
+[node name="TextureButton" type="TextureButton" parent="InputsManager/In-GameMenu/MenuContainer"]
+layout_mode = 2
+texture_normal = SubResource("CanvasTexture_vtaks")
+texture_pressed = ExtResource("6_0tnpc")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MainMenu" type="Node" parent="InputsManager"]
+script = ExtResource("4_p57ef")
+metadata/_custom_type_script = "uid://d2neuflaukaxe"
+
+[node name="MainMenuContainer" type="PanelContainer" parent="InputsManager/MainMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_0tnpc")
+
+[node name="TestMenuItem" type="Panel" parent="InputsManager/MainMenu/MainMenuContainer"]
+layout_mode = 2
+
+[node name="CameraTransition" type="Node" parent="InputsManager"]
+script = ExtResource("4_iywne")
+metadata/_custom_type_script = "uid://d2neuflaukaxe"
+
+[node name="Player" parent="." instance=ExtResource("12_dinhu")]
