@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bk7ig80fxqfpq"]
+[gd_scene load_steps=17 format=3 uid="uid://bk7ig80fxqfpq"]
 
 [ext_resource type="Script" uid="uid://ckt6qvv0paukc" path="res://scripts/state_manager_test.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bljve8dhflb3k" path="res://scenes/inputs_manager.tscn" id="2_yqjtg"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cy576nvk6xam8" path="res://textures/default_texture_blue.png" id="6_0tnpc"]
 [ext_resource type="Script" uid="uid://boudfpsr7j1ul" path="res://scenes/main_menu_container.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cxykyyxwqfy2v" path="res://scenes/player.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dsqhs0r0dchx2" path="res://floor.glb" id="13_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b4cx4l3h7eyaf" path="res://wall.glb" id="14_ca42v"]
+[ext_resource type="PackedScene" uid="uid://c3f3mylnkehi4" path="res://tabletop.glb" id="15_rysoc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vtaks"]
 diffuse_texture = ExtResource("5_gee14")
@@ -69,3 +72,11 @@ script = ExtResource("4_iywne")
 metadata/_custom_type_script = "uid://d2neuflaukaxe"
 
 [node name="Player" parent="." instance=ExtResource("12_dinhu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="floor" parent="." instance=ExtResource("13_ir15t")]
+
+[node name="wall" parent="." instance=ExtResource("14_ca42v")]
+
+[node name="tabletop" parent="." instance=ExtResource("15_rysoc")]
+transform = Transform3D(0.948324, 0, 0.317305, 0, 1, 0, -0.317305, 0, 0.948324, -1.4, 0, 0.701)
